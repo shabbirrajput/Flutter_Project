@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/dashboard/screen_dashboard.dart';
 import 'package:shopping_app/pages/login_signup_page/login_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -12,7 +13,11 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          color: Color(0xFF151026),
+        ),
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Login/Register'),
@@ -32,20 +37,30 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  String? admin;
-  String? customer;
+  bool isAdmin = true;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.all(10),
+    return Padding(
+      padding: const EdgeInsets.all(10),
       child: ListView(
         children: [
+          const Padding(
+            padding: EdgeInsets.all(12.0),
+            child: Text(
+              'Create an account',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10),
             child: TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Enter First Name',
-                labelText: 'First Name',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -56,7 +71,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child: TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Enter Last Name',
-                labelText: 'Last Name',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -66,8 +80,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             padding: const EdgeInsets.all(10),
             child: TextFormField(
               decoration: const InputDecoration(
-                hintText: 'Enter Email Adress',
-                labelText: 'Email Adress',
+                hintText: 'Enter Email Address',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -78,7 +91,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child: TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Enter Password',
-                labelText: 'Password',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -89,72 +101,83 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child: TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Enter Confirm Password',
-                labelText: 'Confirm Password',
                 border: OutlineInputBorder(),
               ),
             ),
           ),
-          Container(
-          padding: const EdgeInsets.all(20),
-    child:
-    Column(
-    children: [
-
-    const Text("Are you A..?", style: TextStyle(
-    fontSize: 18
-    ),),
-
-    const Divider(),
-
-    RadioListTile(
-    title: const Text("Admin"),
-    value: "Admin",
-    groupValue: admin,
-    onChanged: (value){
-    setState(() {
-    admin = value.toString();
-    });
-    },
-    ),
-      RadioListTile(
-        title: const Text("Customer"),
-        value: "Customer",
-        groupValue: customer,
-        onChanged: (value){
-          setState(() {
-            customer = value.toString();
-          });
-        },
-      ),
+          const SizedBox(height: 20,),
+          Column(
+            children: const [
+              Text('Are you a..?'),
+            ],
+          ),
+          const SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isAdmin = true;
+                    });
+                  },
+                  icon: Icon(isAdmin
+                      ? Icons.radio_button_on
+                      : Icons.radio_button_off)),
+              const Text("Admin"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isAdmin = false;
+                        });
+                      },
+                      icon: Icon(isAdmin
+                          ? Icons.radio_button_off
+                          : Icons.radio_button_on)),
+                  const Text("Customer")
+                ],
+              ),
+            ],
+          ),
           Container(
               height: 50,
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: ElevatedButton(
-                child: const Text('Sign Up',style: TextStyle(fontSize: 20),),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green[500],
+                    textStyle: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold)),
                 onPressed: () {
-
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ScreenDashboard()),
+                  );
+                },
+                child: const Text('SignUp'),
+              )),
           const SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text('Already Have Account?'),
-              TextButton(child: const Text('Sign In',style: TextStyle(fontSize: 20),
-              ),
-                  onPressed: (){
+            children: [
+              const Text('Already have an account?'),
+              TextButton(
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(fontSize: 20,color: Colors.green),
+                  ),
+                  onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
                     );
-                  }
-              )
+                  })
             ],
           )
         ],
