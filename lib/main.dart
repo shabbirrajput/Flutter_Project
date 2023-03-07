@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/splash/screen_splash.dart';
+import 'package:shopping_app/pages/login_signup_page/login_page.dart';
 
 void main() => runApp(const ShoppingApp());
 class ShoppingApp extends StatelessWidget {
@@ -12,7 +12,7 @@ class ShoppingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ScreenSplash(),
+      home: const LoginPage(),
     );
   }
 }

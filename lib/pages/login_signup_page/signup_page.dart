@@ -105,13 +105,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ),
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           Column(
             children: const [
               Text('Are you a..?'),
             ],
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -146,10 +150,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               height: 50,
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green[500],
-                    textStyle: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold)),
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.purple),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.0),
+                    ),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -169,7 +180,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               TextButton(
                   child: const Text(
                     'Sign In',
-                    style: TextStyle(fontSize: 20,color: Colors.green),
+                    style: TextStyle(fontSize: 20, color: Colors.green),
                   ),
                   onPressed: () {
                     Navigator.push(
