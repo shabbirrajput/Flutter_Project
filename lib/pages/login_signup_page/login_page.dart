@@ -23,7 +23,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_back)),
+          title:
+              IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
           elevation: 2,
         ),
         body: const MyStatefulWidget(),
@@ -63,10 +64,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     child: const Text(
                       'Sign In',
                       style:
-                      TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Image.asset("assets/images/login.png",height: 200,width: 200,),
+                  Image.asset(
+                    "assets/images/login.png",
+                    height: 200,
+                    width: 200,
+                  ),
                   const Divider(
                     color: Colors.deepPurpleAccent,
                     //thickness: 5,
@@ -78,7 +83,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   const Divider(
                     color: Colors.deepPurpleAccent,
-                    thickness: 5,
+                    thickness: 4.5,
                   ),
                   const Padding(
                     padding: EdgeInsets.all(12.0),
@@ -93,8 +98,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   TextFormField(
                     controller: nameController,
-                    decoration: const InputDecoration(
-                        hintText: 'Enter Email', border: OutlineInputBorder()),
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                width: 3, color: Colors.deepPurpleAccent),
+                            borderRadius: BorderRadius.circular(50)),
+                        hintText: 'Enter Email'),
                   ),
                   const SizedBox(
                     height: 20,
@@ -102,8 +111,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   TextFormField(
                     obscureText: true,
                     controller: passwordController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 3, color: Colors.deepPurpleAccent),
+                          borderRadius: BorderRadius.circular(50)),
                       hintText: 'Enter Password',
                     ),
                   ),
@@ -111,30 +123,31 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     height: 20,
                   ),
                   Container(
-                      height: 50,
-                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(24.0),
-                            ),
+                    height: 50,
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.deepPurpleAccent),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24.0),
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ScreenDashboard()),
-                          );
-                        },
-                        child: const Text('Login'),
-                      )),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ScreenDashboard()),
+                        );
+                      },
+                      child: const Text('Login'),
+                    ),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -169,7 +182,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white70,
                               shape: const CircleBorder()),
-                          child: Image.asset("assets/icons/google_sign_in.png",height: 60,width: 60,),
+                          child: Image.asset(
+                            "assets/icons/google_sign_in.png",
+                            height: 60,
+                            width: 60,
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -182,10 +199,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white70,
                               shape: const CircleBorder()),
-                          child: Image.asset("assets/icons/facebook.png",height: 60,width: 60,),
+                          child: Image.asset(
+                            "assets/icons/facebook.png",
+                            height: 60,
+                            width: 60,
+                          ),
                         ),
                       ),
-                      SizedBox(height: 50,)
+                      const SizedBox(
+                        height: 50,
+                      )
                     ],
                   ),
                 ],
