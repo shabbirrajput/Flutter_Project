@@ -15,14 +15,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          color: Color(0xFF151026),
+          color: Colors.deepPurpleAccent,
         ),
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Login/Register'),
+          title: IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_back)),
           elevation: 2,
         ),
         body: const MyStatefulWidget(),
@@ -49,7 +50,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: SizedBox(
-        height: 600,
+        height: 900,
         child: Card(
             elevation: 20,
             child: Padding(
@@ -60,13 +61,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      'Sign In & Sign Up',
+                      'Sign In',
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                   ),
+                  Image.asset("assets/images/login.png",height: 200,width: 200,),
                   const Divider(
-                    color: Colors.red,
+                    color: Colors.deepPurpleAccent,
                     //thickness: 5,
                     indent: 200,
                     endIndent: 200,
@@ -75,7 +77,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     height: 20,
                   ),
                   const Divider(
-                    color: Colors.red,
+                    color: Colors.deepPurpleAccent,
                     thickness: 5,
                   ),
                   const Padding(
@@ -116,7 +118,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           foregroundColor:
                               MaterialStateProperty.all<Color>(Colors.white),
                           backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.purple),
+                              MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -154,6 +156,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           }),
                     ],
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -164,7 +169,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white70,
                               shape: const CircleBorder()),
-                          child: Image.asset("assets/icons/google_sign_in.png"),
+                          child: Image.asset("assets/icons/google_sign_in.png",height: 60,width: 60,),
                         ),
                       ),
                       const SizedBox(
@@ -177,9 +182,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white70,
                               shape: const CircleBorder()),
-                          child: Image.asset("assets/icons/facebook.png"),
+                          child: Image.asset("assets/icons/facebook.png",height: 60,width: 60,),
                         ),
                       ),
+                      SizedBox(height: 50,)
                     ],
                   ),
                 ],

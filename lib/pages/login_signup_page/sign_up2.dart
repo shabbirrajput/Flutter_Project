@@ -12,6 +12,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
           resizeToAvoidBottomInset: false,
           body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <

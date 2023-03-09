@@ -15,12 +15,18 @@ class _SignUpPageState extends State<SignUpPage> {
     return MaterialApp(
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          color: Color(0xFF151026),
+          color: Colors.deepPurpleAccent,
         ),
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Login/Register'),
+          title: IconButton(onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const LoginPage()),
+            );
+          }, icon: const Icon(Icons.arrow_back)),
           elevation: 2,
         ),
         body: const MyStatefulWidget(),
@@ -45,6 +51,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       padding: const EdgeInsets.all(10),
       child: ListView(
         children: [
+          Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(10),
+            child: const Text(
+              'Sign Up',
+              style:
+              TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Image.asset("assets/images/sign_up.png",height: 200,width: 200,),
           const Padding(
             padding: EdgeInsets.all(12.0),
             child: Text(
@@ -154,7 +170,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.white),
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.purple),
+                      MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24.0),
@@ -188,9 +204,40 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       MaterialPageRoute(
                           builder: (context) => const LoginPage()),
                     );
-                  })
+                  }),
             ],
-          )
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white70,
+                      shape: const CircleBorder()),
+                  child: Image.asset("assets/icons/google_sign_in.png",height: 60,width: 60,),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white70,
+                      shape: const CircleBorder()),
+                  child: Image.asset("assets/icons/facebook.png",height: 60,width: 60,),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/pages/login_signup_page/login_page.dart';
+import 'package:shopping_app/splash/screen_splash.dart';
 
 void main() => runApp(const ShoppingApp());
 class ShoppingApp extends StatelessWidget {
@@ -8,11 +8,12 @@ class ShoppingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Grocery App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const ScreenSplash(),
     );
   }
 }

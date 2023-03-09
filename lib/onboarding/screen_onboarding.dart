@@ -60,14 +60,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ...List.generate(
                         demo_data.length,
-                        (index) => Padding(
-                              padding: const EdgeInsets.only(right: 4),
-                              child:
-                                  DotIndicator(isActive: index == _pageIndex),
-                            )),
+                            (index) => Padding(
+                          padding: const EdgeInsets.only(right: 4),
+                          child:
+                          DotIndicator(isActive: index == _pageIndex),
+                        )),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     const Spacer(),
                     SizedBox(
                       height: 60,
@@ -89,7 +95,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           },
                           style: ElevatedButton.styleFrom(
                               shape: const CircleBorder(),
-                              backgroundColor: Colors.deepPurple),
+                              backgroundColor: Colors.deepPurpleAccent),
                           child: Image.asset(
                             "assets/images/right_arrow.png",
                             color: Colors.white,
