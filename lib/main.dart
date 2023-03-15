@@ -13,6 +13,7 @@ class ShoppingApp extends StatelessWidget {
       title: 'Grocery App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(color: Colors.deepPurpleAccent)
       ),
       home: const ScreenDashboard(),
     );

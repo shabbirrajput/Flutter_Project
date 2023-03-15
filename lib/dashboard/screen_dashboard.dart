@@ -37,10 +37,7 @@ class _ScreenDashboardState extends State<ScreenDashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          appBarTheme: const AppBarTheme(color: Colors.deepPurpleAccent)),
-      home: Scaffold(
+    return Scaffold(
         drawer: Drawer(
           child: ListView(
             padding: const EdgeInsets.all(0),
@@ -125,7 +122,6 @@ class _ScreenDashboardState extends State<ScreenDashboard> {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }
