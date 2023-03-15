@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/dashboard/screen_dashboard.dart';
 import 'package:shopping_app/splash/screen_splash.dart';
 
 void main() => runApp(const ShoppingApp());
@@ -13,7 +14,7 @@ class ShoppingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ScreenSplash(),
+      home: const ScreenDashboard(),
     );
   }
 }

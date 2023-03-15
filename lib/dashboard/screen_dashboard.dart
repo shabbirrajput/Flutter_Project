@@ -1,159 +1,131 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/dashboard/category/category_model.dart';
-import 'package:shopping_app/dashboard/view/tab/view/tab_home.dart';
+import 'package:shopping_app/dashboard/view/tab/tab_account.dart';
+import 'package:shopping_app/dashboard/view/tab/tab_cart.dart';
+import 'package:shopping_app/dashboard/view/tab/tab_category.dart';
+import 'package:shopping_app/dashboard/view/tab/tab_home.dart';
 
 class ScreenDashboard extends StatefulWidget {
-  const ScreenDashboard({super.key});
+  const ScreenDashboard({Key? key}) : super(key: key);
 
   @override
   State<ScreenDashboard> createState() => _ScreenDashboardState();
 }
 
 class _ScreenDashboardState extends State<ScreenDashboard> {
-  List<CategoryModel> mCarModel = [];
-
-  int selectedIndex = 0;
+  late var _currentIndex = 0;
 
   @override
-  void initState() {
-    setData();
-    super.initState();
-  }
-
-  void setData() {
-    CategoryModel mCarModelData = CategoryModel();
-    mCarModelData.image = '';
-    mCarModelData.name = 'BMW';
-    mCarModelData.price = '\$100';
-
-    mCarModel.add(mCarModelData);
-
-    mCarModelData = CategoryModel();
-    mCarModelData.image = '';
-    mCarModelData.name = 'MG';
-    mCarModelData.price = '\$90';
-
-    mCarModel.add(mCarModelData);
-    setState(() {});
-  }
-
   void _onItemTapped(int index) {
     setState(() {
-      selectedIndex = index;
+       _currentIndex = index;
     });
   }
+  void initState() {
+    super.initState();
+    _loadScreen();
+  }
 
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  void _loadScreen() {
+    switch(_currentIndex) {
+      case 0: return setState(() => const TabHome());
+      case 1: return setState(() =>  const TabCart());
+      case 2: return setState(() =>  const TabCart());
+      case 3: return setState(() =>  const TabCart());
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    Drawer drawer = Drawer(
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          UserAccountsDrawerHeader(
-            accountName: const Text("Shabbir Rajput"),
-            accountEmail: const Text("shabbirrajput97@gmail.com"),
-            currentAccountPicture: CircleAvatar(
-              radius: 18,
-              child: ClipOval(
-                child: Image.network(
-                    'https://media.licdn.com/dms/image/C4D03AQHsGuxsef22nw/profile-displayphoto-shrink_800_800/0/1639582709119?e=2147483647&v=beta&t=YCn9_BqaV-bsi7CSNYGl18buvR8Efed5B0rdiuRVbmw'),
-              ),
-            ),
-          ),
-          ListTile(
-            tileColor: selectedIndex == 0 ? Colors.green : null,
-            leading: const Icon(Icons.home),
-            title: const Text("Home"),
-            onTap: () {
-              _onItemTapped(0);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            tileColor: selectedIndex == 1 ? Colors.yellow : null,
-            leading: const Icon(Icons.feed),
-            title: const Text("Feed"),
-            onTap: () {
-              _onItemTapped(1);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            tileColor: selectedIndex == 2 ? Colors.blue : null,
-            leading: const Icon(Icons.account_box),
-            title: const Text("Account"),
-            onTap: () {
-              _onItemTapped(2);
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
-    );
-    return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        centerTitle: false,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            if (scaffoldKey.currentState!.isDrawerOpen) {
-              scaffoldKey.currentState!.openEndDrawer();
-            } else {
-              scaffoldKey.currentState!.openDrawer();
-            }
-          },
-        ),
-        actions: [
-          if (selectedIndex == 0)
-            IconButton(
-                onPressed: () {
-                  // Navigator.of(context).pushAndRemoveUntil(
-                  //     MaterialPageRoute(builder: (context) => const AdminDashboard()),
-                  //         (Route<dynamic> route) => false);
+    return MaterialApp(
+      theme: ThemeData(
+          appBarTheme: const AppBarTheme(color: Colors.deepPurpleAccent)),
+      home: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            padding: const EdgeInsets.all(0),
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.deepPurpleAccent,
+                ), //BoxDecoration
+                child: UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(color: Colors.deepPurpleAccent),
+                  accountName: Text(
+                    "Shabbir Rajput",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  accountEmail: Text("Shabbirrajput@gmail.com"),
+                  currentAccountPictureSize: Size.square(50),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Text(
+                      "S",
+                      style:
+                          TextStyle(fontSize: 30.0, color: Colors.deepPurple),
+                    ), //Text
+                  ), //circleAvatar
+                ), //UserAccountDrawerHeader
+              ), //DrawerHeader
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text(' My Profile '),
+                onTap: () {
+                  Navigator.pop(context);
                 },
-                icon: const Icon(Icons.switch_account))
+              ),
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text('LogOut'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),  body: IndexedStack(
+        index: _currentIndex,
+        children: const [
+          TabHome(),
+          Tabcategory(),
+          TabCart(),
+          TabAccount(),
         ],
-        title: Text(selectedIndex == 0
-            ? 'Welcome To Home'
-            : selectedIndex == 1
-                ? 'Feed'
-                : 'Account'),
       ),
-      drawer: drawer,
-      bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Grocery App'),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.deepPurpleAccent,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(.60),
+          selectedFontSize: 14,
+          unselectedFontSize: 14,
+          currentIndex: _currentIndex,
+            onTap: _onItemTapped,
+            elevation: 5,
+          items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                backgroundColor: Colors.green,
-                label: 'Home'),
+              label: 'Home',
+              icon: Icon(Icons.home),
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.feed),
-                backgroundColor: Colors.yellow,
-                label: 'Feed'),
+              label: 'Category',
+              icon: Icon(Icons.category),
+            ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.account_box),
-              backgroundColor: Colors.blue,
+              label: 'Cart',
+              icon: Icon(Icons.shopping_cart),
+            ),
+            BottomNavigationBarItem(
               label: 'Account',
+              icon: Icon(Icons.person),
             ),
           ],
-          type: BottomNavigationBarType.shifting,
-          currentIndex: selectedIndex,
-          selectedItemColor: Colors.black,
-          iconSize: 40,
-          onTap: _onItemTapped,
-          elevation: 5),
-      body: IndexedStack(
-        index: selectedIndex,
-        children: const [
-          MyHomePage(),
-          Center(child: Text('Feed')),
-          Center(child: Text('Account')),
-        ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        ),
+      ),
     );
   }
 }

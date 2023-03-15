@@ -142,6 +142,7 @@ class Onboard {
       {required this.image, required this.title, required this.description});
 }
 
+// ignore: non_constant_identifier_names
 final List<Onboard> demo_data = [
   Onboard(
     image: "assets/images/onboarding-1.png",

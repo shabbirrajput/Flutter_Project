@@ -2,15 +2,22 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/dashboard/category/category_model.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class TabHome extends StatefulWidget {
+  const TabHome({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<TabHome> createState() => _TabHomeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _TabHomeState extends State<TabHome> {
   List<CategoryModel> mCategoryModel = [];
+
+  List<String> images = [
+    "https://static.javatpoint.com/tutorial/flutter/images/flutter-logo.png",
+    "https://static.javatpoint.com/tutorial/flutter/images/flutter-logo.png",
+    "https://static.javatpoint.com/tutorial/flutter/images/flutter-logo.png",
+    "https://static.javatpoint.com/tutorial/flutter/images/flutter-logo.png"
+  ];
 
   get index => 1;
 
@@ -42,14 +49,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(),
-      home: Scaffold(
+    return  Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: [
+              Image.asset('assets/images/home_img/first.png'),
               Container(
-                height: 300,
+                padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+                height: 200,
                 color: Colors.transparent,
                 width: double.infinity,
                 child: CarouselSlider(
@@ -60,17 +67,29 @@ class _MyHomePageState extends State<MyHomePage> {
                         return Container(
                             width: MediaQuery.of(context).size.width,
                             margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration:
-                                const BoxDecoration(color: Colors.grey),
-                            child: Image.network(mCategoryModel[index].image!));
+                            decoration: const BoxDecoration(color: Colors.transparent),
+                            child: Image.network('https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=360/layout-engine/2023-03/ice-cream_WEB.jpg')
+                        );
                       },
                     );
                   }).toList(),
                 ),
               ),
+              Container(
+                child: GridView.builder(
+                  itemCount: images.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 4.0,
+                      mainAxisSpacing: 4.0
+                  ),
+                  itemBuilder: (BuildContext context, int index){
+                    return Image.network(images[index]);
+                  },
+                ),
+              )
             ],
           ),
-        ),
       ),
     );
   }

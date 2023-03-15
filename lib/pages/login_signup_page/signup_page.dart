@@ -192,7 +192,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: ElevatedButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
