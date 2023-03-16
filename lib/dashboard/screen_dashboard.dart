@@ -14,114 +14,102 @@ class ScreenDashboard extends StatefulWidget {
 class _ScreenDashboardState extends State<ScreenDashboard> {
   late var _currentIndex = 0;
 
-  @override
   void _onItemTapped(int index) {
     setState(() {
-       _currentIndex = index;
+      _currentIndex = index;
     });
-  }
-  void initState() {
-    super.initState();
-    _loadScreen();
-  }
-
-  void _loadScreen() {
-    switch(_currentIndex) {
-      case 0: return setState(() => const TabHome());
-      case 1: return setState(() =>  const TabCart());
-      case 2: return setState(() =>  const TabCart());
-      case 3: return setState(() =>  const TabCart());
-    }
   }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            padding: const EdgeInsets.all(0),
-            children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.deepPurpleAccent,
-                ), //BoxDecoration
-                child: UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(color: Colors.deepPurpleAccent),
-                  accountName: Text(
-                    "Shabbir Rajput",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  accountEmail: Text("Shabbirrajput@gmail.com"),
-                  currentAccountPictureSize: Size.square(50),
-                  currentAccountPicture: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Text(
-                      "S",
-                      style:
-                          TextStyle(fontSize: 30.0, color: Colors.deepPurple),
-                    ), //Text
-                  ), //circleAvatar
-                ), //UserAccountDrawerHeader
-              ), //DrawerHeader
-              ListTile(
-                leading: const Icon(Icons.person),
-                title: const Text(' My Profile '),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.logout),
-                title: const Text('LogOut'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        ),  body: IndexedStack(
+      // drawer: Drawer(
+      //   child: ListView(
+      //     padding: const EdgeInsets.all(0),
+      //     children: [
+      //       const DrawerHeader(
+      //         decoration: BoxDecoration(
+      //           color: Colors.deepPurpleAccent,
+      //         ), //BoxDecoration
+      //         child: UserAccountsDrawerHeader(
+      //           decoration: BoxDecoration(color: Colors.deepPurpleAccent),
+      //           accountName: Text(
+      //             "Shabbir Rajput",
+      //             style: TextStyle(fontSize: 18),
+      //           ),
+      //           accountEmail: Text("Shabbirrajput@gmail.com"),
+      //           currentAccountPictureSize: Size.square(50),
+      //           currentAccountPicture: CircleAvatar(
+      //             backgroundColor: Colors.white,
+      //             child: Text(
+      //               "S",
+      //               style:
+      //               TextStyle(fontSize: 30.0, color: Colors.deepPurple),
+      //             ), //Text
+      //           ), //circleAvatar
+      //         ), //UserAccountDrawerHeader
+      //       ), //DrawerHeader
+      //       ListTile(
+      //         leading: const Icon(Icons.person),
+      //         title: const Text(' My Profile '),
+      //         onTap: () {
+      //           Navigator.pop(context);
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: const Icon(Icons.logout),
+      //         title: const Text('LogOut'),
+      //         onTap: () {
+      //           Navigator.pop(context);
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      body: IndexedStack(
         index: _currentIndex,
         children: const [
           TabHome(),
-          Tabcategory(),
-          TabCart(),
+          TabCategory(),
+          CartPage(),
           TabAccount(),
         ],
       ),
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text('Grocery App'),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.deepPurpleAccent,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white.withOpacity(.60),
-          selectedFontSize: 14,
-          unselectedFontSize: 14,
-          currentIndex: _currentIndex,
-            onTap: _onItemTapped,
-            elevation: 5,
-          items: const [
-            BottomNavigationBarItem(
-              label: 'Home',
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              label: 'Category',
-              icon: Icon(Icons.category),
-            ),
-            BottomNavigationBarItem(
-              label: 'Cart',
-              icon: Icon(Icons.shopping_cart),
-            ),
-            BottomNavigationBarItem(
-              label: 'Account',
-              icon: Icon(Icons.person),
-            ),
-          ],
-        ),
-      );
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Grocery App'),
+        leading: IconButton(onPressed: () {}, icon:  Icon(Icons.arrow_back_ios)),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.deepPurpleAccent,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(.60),
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+        elevation: 5,
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Category',
+            icon: Icon(Icons.category),
+          ),
+          BottomNavigationBarItem(
+            label: 'Cart',
+            icon: Icon(Icons.shopping_cart),
+          ),
+          BottomNavigationBarItem(
+            label: 'Account',
+            icon: Icon(Icons.person),
+          ),
+        ],
+      ),
+    );
   }
 }
