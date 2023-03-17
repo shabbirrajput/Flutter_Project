@@ -71,23 +71,23 @@ List<PopularItems> popitems = [
     "Onion (Loose)",
     "https://www.bigbasket.com/media/uploads/p/s/40075537_5-fresho-onion.jpg",
   ),
-   PopularItems(
+  PopularItems(
     "Farm Eggs - Regular",
     "https://www.bigbasket.com/media/uploads/p/s/281204_9-fresho-farm-eggs-regular-medium-antibiotic-residue-free.jpg",
   ),
-   PopularItems(
+  PopularItems(
     "Farm Eggs - Table Tray",
     "https://www.bigbasket.com/media/uploads/p/s/40072320_2-fresho-farm-eggs-table-tray-medium-antibiotic-residue-free.jpg",
   ),
-   PopularItems(
+  PopularItems(
     "Tender Coconut",
     "https://www.bigbasket.com/media/uploads/p/s/40057966_3-fresho-tender-coconut-medium.jpg",
   ),
-   PopularItems(
+  PopularItems(
     "Extra Virgin Olive Oil",
     "https://www.bigbasket.com/media/uploads/p/s/40208261_1-borges-extra-virgin-olive-oil.jpg",
   ),
-   PopularItems(
+  PopularItems(
     "Refined Sunflower Oil",
     "https://www.bigbasket.com/media/uploads/p/s/274120_6-sunpure-refined-sunflower-oil.jpg",
   ),
@@ -95,17 +95,32 @@ List<PopularItems> popitems = [
     "Apple - Shimla",
     "https://www.bigbasket.com/media/uploads/p/s/40033819_29-fresho-apple-shimla.jpg",
   ),
-   PopularItems(
+  PopularItems(
     "Cauliflower",
     "https://www.bigbasket.com/media/uploads/p/s/10000074_19-fresho-cauliflower.jpg",
   ),
-   PopularItems(
+  PopularItems(
     "Cream Bathing Bar ",
     "https://www.bigbasket.com/media/uploads/p/s/40158282_10-dove-cream-beauty-bathing-bar.jpg",
   ),
-   PopularItems(
+  PopularItems(
     "Pomegranate Regular",
     "https://www.bigbasket.com/media/uploads/p/s/40120006_5-fresho-pomegranate-small.jpg",
   ),
+];
 
+class SubCatitems {
+  String name;
+  String image;
+  int price;
+
+  SubCatitems(this.name, this.image, this.price);
+}
+
+List<SubCatitems> subCatItem = [
+  SubCatitems(
+    "Aashirvaad Chakk Atta (5 kg)",
+    "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=135/app/images/products/sliding_image/333764a.jpg?ts=1677734535",
+    49,
+  ),
 ];

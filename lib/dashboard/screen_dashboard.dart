@@ -20,7 +20,6 @@ class _ScreenDashboardState extends State<ScreenDashboard> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +78,6 @@ class _ScreenDashboardState extends State<ScreenDashboard> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Grocery App'),
-        leading: IconButton(onPressed: () {}, icon:  Icon(Icons.arrow_back_ios)),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

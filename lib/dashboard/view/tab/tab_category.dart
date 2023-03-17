@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/dashboard/category/cat_model.dart';
+import 'package:shopping_app/dashboard/category/subcategory/atta_flour.dart';
 
 class TabCategory extends StatefulWidget {
   const TabCategory({Key? key}) : super(key: key);
@@ -13,32 +14,39 @@ class _TabCategoryState extends State<TabCategory> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 10.0, left: 20.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Category',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Colors.black45),
-              ),
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(top: 10.0, left: 20.0),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Category',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  color: Colors.black45),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: GridView.builder(
-                itemCount: items.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: GridView.builder(
+              itemCount: items.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AttaFlour()));
+                  },
+                  child: Card(
                     child: Container(
                       padding: const EdgeInsets.only(top: 5),
                       decoration: BoxDecoration(
@@ -47,16 +55,20 @@ class _TabCategoryState extends State<TabCategory> {
                           BoxShadow(
                             color: Colors.blueGrey.withOpacity(0.4),
                             spreadRadius: 3,
-                            blurRadius: 5.0,)
+                            blurRadius: 5.0,
+                          )
                         ],
                         color: Colors.white,
                       ),
                       child: Column(
                         children: [
-                          const SizedBox(height: 15,),
+                          const SizedBox(
+                            height: 15,
+                          ),
                           CachedNetworkImage(
                             height: 100,
-                            width: 100, imageUrl: items[index].image,
+                            width: 100,
+                            imageUrl: items[index].image,
                           ),
                           const SizedBox(
                             height: 15,
@@ -84,12 +96,13 @@ class _TabCategoryState extends State<TabCategory> {
                         ],
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
           ),
-        ],
-      );
+        ),
+      ],
+    );
   }
 }

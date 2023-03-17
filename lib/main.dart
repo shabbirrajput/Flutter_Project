@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/dashboard/screen_dashboard.dart';
+import 'package:shopping_app/pages/login_signup_page/login_page.dart';
 import 'package:shopping_app/splash/screen_splash.dart';
 
 void main() => runApp(const ShoppingApp());
@@ -16,6 +17,9 @@ class ShoppingApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(color: Colors.deepPurpleAccent)
       ),
       home: const ScreenDashboard(),
+      routes: {
+        '/login' : (context)  => const LoginPage(),
+      },
     );
   }
 }

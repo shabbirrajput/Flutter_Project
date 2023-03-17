@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/dashboard/screen_dashboard.dart';
 
 class CartItem {
   String name;
@@ -24,6 +25,9 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     /* appBar: AppBar(
+
+      ),*/
       body: ListView.builder(
         itemCount: cartItems.length,
         itemBuilder: (context, index) {
